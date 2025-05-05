@@ -246,12 +246,11 @@
       gap: 60px;
     }
 
-    .about-image {
-      flex: 1;
-      height: 450px;
-      background: url('main.jpg') center center/cover;
-      border-radius: 2px;
-    }
+.about-image {
+  flex: 1;
+  height: auto;
+}
+
 
     .about-text {
       flex: 1;
@@ -834,6 +833,28 @@
   font-size: 0.9rem;
 }
 
+.about-content {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+/* Responsive layout: stack image and text vertically on small screens */
+@media screen and (max-width: 768px) {
+  .about-content {
+    flex-direction: column;
+    text-align: center; /* Optional: center-align text on mobile */
+  }
+
+  .about-image,
+  .about-text {
+    width: 100%;
+  }
+
+  .about-image {
+    height: 300px; /* Reduce height for smaller screens */
+  }
+}
 
 
   </style>
@@ -885,7 +906,10 @@
     <div class="container">
       <h2 class="section-title">About Wilson Built</h2>
       <div class="about-content">
-        <div class="about-image"></div>
+        <div class="about-image">
+          <img src="main.jpg" alt="Wilson Built team" style="width: 100%; height: auto; border-radius: 2px;" />
+        </div>
+
         <div class="about-text">
           <h3>Building Excellence Since 2010</h3>
           <p>At Wilson Built, we believe that your home should be a reflection of your unique style and needs.
