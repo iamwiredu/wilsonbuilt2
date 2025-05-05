@@ -1,0 +1,1427 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <title>Wilson Built - Custom Home Builders</title>
+  <style>
+    /* Base Styles */
+    :root {
+      --primary-color: #111111;
+      --secondary-color: #f5f5f5;
+      --accent-color: #888888;
+      --text-color: #333333;
+      --light-text: #ffffff;
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--secondary-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Typography */
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-size: 3rem;
+      letter-spacing: -1px;
+    }
+
+    h2 {
+      font-size: 2.2rem;
+      letter-spacing: -0.5px;
+    }
+
+    h3 {
+      font-size: 1.8rem;
+    }
+
+    p {
+      margin-bottom: 1.5rem;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      padding: 12px 32px;
+      background-color: var(--primary-color);
+      color: var(--light-text);
+      border: none;
+      border-radius: 2px;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .btn:hover {
+      background-color: #333;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      border: 2px solid var(--primary-color);
+      color: var(--primary-color);
+    }
+
+    .btn-outline:hover {
+      background-color: var(--primary-color);
+      color: var(--light-text);
+    }
+
+    /* Header & Navigation */
+    header {
+      background-color: var(--primary-color);
+      color: var(--light-text);
+      padding: 20px 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      transition: var(--transition);
+    }
+
+    header.scrolled {
+      padding: 12px 0;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+      color: var(--light-text);
+      text-decoration: none;
+    }
+
+    .logo span {
+      color: var(--accent-color);
+    }
+
+    .nav-toggle {
+      display: none;
+      background: transparent;
+      border: none;
+      color: var(--light-text);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+
+    nav ul li {
+      margin-left: 30px;
+    }
+
+    nav ul li a {
+      color: var(--light-text);
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    nav ul li a:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: var(--light-text);
+      bottom: -5px;
+      left: 0;
+      transition: var(--transition);
+    }
+
+    nav ul li a:hover:after {
+      width: 100%;
+    }
+
+    /* Hero Section */
+.hero {
+  height: 100vh;
+  background: url('cover.jpg') center center/cover no-repeat;
+  color: var(--light-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  text-align: left;
+  padding: 0 20px;
+}
+
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 600px;
+    }
+
+    .hero h1 {
+      margin-bottom: 20px;
+      font-size: 3.5rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      line-height: 1.7;
+    }
+
+    .hero-image {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 50%;
+      height: 100%;
+      background: url('cover.jpg') center center/cover;
+      z-index: 1;
+      opacity: 0.6;
+    }
+
+    /* About Section */
+    .section {
+      padding: 100px 0;
+    }
+
+    .section-title {
+      margin-bottom: 60px;
+      position: relative;
+    }
+
+    .section-title:after {
+      content: '';
+      position: absolute;
+      height: 4px;
+      width: 60px;
+      background-color: var(--primary-color);
+      bottom: -15px;
+      left: 0;
+    }
+
+    .about-content {
+      display: flex;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .about-image {
+      flex: 1;
+      height: 450px;
+      background: url('main.jpg') center center/cover;
+      border-radius: 2px;
+    }
+
+    .about-text {
+      flex: 1;
+    }
+
+    /* Services Section */
+    .services {
+      background-color: var(--primary-color);
+      color: var(--light-text);
+    }
+
+    .services .section-title:after {
+      background-color: var(--light-text);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .service-card {
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 30px;
+      border-radius: 2px;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .service-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .service-title {
+      margin-bottom: 15px;
+    }
+
+    /* Projects Section */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 20px;
+    }
+
+    .project-card {
+      position: relative;
+      height: 300px;
+      overflow: hidden;
+      border-radius: 2px;
+    }
+
+    .project-image {
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      transition: var(--transition);
+    }
+
+    .project-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      transform: translateY(100%);
+      transition: var(--transition);
+    }
+
+    .project-card:hover .project-overlay {
+      transform: translateY(0);
+    }
+
+    .project-card:hover .project-image {
+      transform: scale(1.1);
+    }
+
+    .project-title {
+      color: var(--light-text);
+      margin-bottom: 5px;
+    }
+
+    .project-category {
+      color: var(--accent-color);
+      font-size: 0.9rem;
+    }
+
+    /* Testimonials Section */
+    .testimonials {
+      background-color: var(--primary-color);
+      color: var(--light-text);
+    }
+
+    .testimonials .section-title:after {
+      background-color: var(--light-text);
+    }
+
+    .testimonial-slider {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .testimonial-slides {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+
+    .testimonial-slide {
+      min-width: 100%;
+      padding: 0 15px;
+      text-align: center;
+    }
+
+    .testimonial-content {
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 40px;
+      border-radius: 2px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .testimonial-text {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      margin-bottom: 30px;
+      position: relative;
+    }
+
+    .testimonial-text:before {
+      content: '"';
+      font-size: 4rem;
+      position: absolute;
+      top: -30px;
+      left: -20px;
+      opacity: 0.3;
+    }
+
+    .testimonial-author {
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    .testimonial-role {
+      color: var(--accent-color);
+      font-size: 0.9rem;
+    }
+
+    .testimonial-controls {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    .testimonial-btn {
+      background-color: transparent;
+      border: none;
+      color: var(--light-text);
+      font-size: 1.5rem;
+      cursor: pointer;
+      margin: 0 15px;
+      transition: var(--transition);
+    }
+
+    .testimonial-btn:hover {
+      color: var(--accent-color);
+    }
+
+    .testimonial-dots {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .testimonial-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.3);
+      margin: 0 5px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .testimonial-dot.active {
+      background-color: var(--light-text);
+    }
+
+    /* Contact Section */
+    .contact-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 50px;
+    }
+
+    .contact-info {
+      margin-bottom: 30px;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      background-color: var(--primary-color);
+      color: var(--light-text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      margin-right: 15px;
+      font-size: 1.2rem;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px 15px;
+      margin-bottom: 20px;
+      border: 1px solid #ddd;
+      border-radius: 2px;
+      font-size: 1rem;
+    }
+
+    .contact-form textarea {
+      height: 150px;
+      resize: vertical;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--primary-color);
+      color: var(--light-text);
+      padding: 60px 0 30px;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      margin-bottom: 50px;
+    }
+
+    .footer-logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+
+    .footer-description {
+      margin-bottom: 20px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 15px;
+    }
+
+    .social-link {
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--light-text);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .social-link:hover {
+      background-color: var(--light-text);
+      color: var(--primary-color);
+    }
+
+    .footer-heading {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .footer-heading:after {
+      content: '';
+      position: absolute;
+      width: 30px;
+      height: 2px;
+      background-color: var(--accent-color);
+      bottom: -10px;
+      left: 0;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+
+    .footer-links a {
+      color: var(--accent-color);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: var(--light-text);
+      padding-left: 5px;
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--accent-color);
+      font-size: 0.9rem;
+    }
+
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background-color: var(--primary-color);
+      color: var(--light-text);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 1.5rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+      z-index: 999;
+    }
+
+    .back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      background-color: #333;
+      transform: translateY(-5px);
+    }
+
+    /* Mobile Navigation */
+    @media screen and (max-width: 768px) {
+      .nav-toggle {
+        display: block;
+      }
+
+      nav {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 70%;
+        height: 100vh;
+        background-color: var(--primary-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: translateX(100%);
+        transition: var(--transition);
+        z-index: 1001;
+      }
+
+      nav.active {
+        transform: translateX(0);
+      }
+
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      nav ul li {
+        margin: 15px 0;
+      }
+
+      .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        opacity: 0;
+        visibility: hidden;
+        transition: var(--transition);
+        z-index: 1000;
+      }
+
+      .overlay.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .close-nav {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: transparent;
+        border: none;
+        color: var(--light-text);
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+
+      .hero-image {
+        width: 100%;
+        opacity: 0.3;
+      }
+
+      .about-content {
+        flex-direction: column;
+      }
+
+      .about-image {
+        width: 100%;
+      }
+
+      .project-card {
+        height: 250px;
+      }
+    }
+
+    /* Animation */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 1s forwards;
+    }
+
+    .fade-in.delay-1 {
+      animation-delay: 0.2s;
+    }
+
+    .fade-in.delay-2 {
+      animation-delay: 0.4s;
+    }
+
+    .fade-in.delay-3 {
+      animation-delay: 0.6s;
+    }
+    /* Hide close button on desktop */
+.close-nav {
+  display: none;
+}
+
+/* Show only on mobile */
+@media screen and (max-width: 768px) {
+  .close-nav {
+    display: block;
+  }
+}
+.footer {
+  background-color: #000000;
+  color: var(--light-text);
+  padding: 60px 0 30px;
+}
+
+.footer-logo {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+  display: inline-block;
+  color: var(--light-text);
+  text-decoration: none;
+}
+
+.footer-logo span {
+  color: var(--accent-color);
+}
+
+.footer-description {
+  margin-bottom: 20px;
+  color: var(--accent-color);
+}
+
+.footer-social {
+  display: flex;
+  gap: 15px;
+}
+
+.social-link {
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--light-text);
+  font-size: 1.1rem;
+  transition: var(--transition);
+}
+
+.social-link:hover {
+  background-color: var(--light-text);
+  color: var(--primary-color);
+}
+
+.footer-heading {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  position: relative;
+  color: var(--light-text);
+}
+
+.footer-heading:after {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 2px;
+  background-color: var(--accent-color);
+  bottom: -10px;
+  left: 0;
+}
+
+.footer-links {
+  list-style: none;
+}
+
+.footer-links li {
+  margin-bottom: 10px;
+  color: var(--accent-color);
+}
+
+.footer-links a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.footer-links a:hover {
+  color: var(--light-text);
+  padding-left: 5px;
+}
+
+.copyright {
+  text-align: center;
+  padding-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--accent-color);
+  font-size: 0.9rem;
+}
+
+@media screen and (max-width: 768px) {
+  /* Navbar Logo */
+  .logo {
+    font-size: 1.2rem; /* reduce logo text size */
+  }
+
+  /* Hero Section */
+  .hero h1 {
+    font-size: 2rem; /* reduce main heading size */
+  }
+
+  .hero p {
+    font-size: 1rem; /* reduce paragraph text size */
+  }
+
+  /* Optional: Adjust button size */
+  .btn {
+    padding: 10px 24px;
+    font-size: 14px;
+  }
+}
+
+
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <div style="display: flex; align-items: center;gap:9px">
+        <span><img src="logo.png" alt="" style="height: 40px;"></span>
+        <a href="#" class="logo">WILSON<span>BUILT</span></a>
+      </div>
+      <button class="nav-toggle" aria-label="Toggle Navigation">&#9776;</button>
+      <nav>
+        <button class="close-nav" aria-label="Close Navigation">&times;</button>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="overlay"></div>
+
+<section id="home" class="hero">
+  <div class="hero-overlay"
+    style="position:absolute;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,0.5);z-index:1;"></div>
+  <div class="container" style="position:relative; z-index:2;">
+    <div class="hero-content">
+      <h1 class="fade-in">Quality Craftsmanship.<br>Timeless Design.</h1>
+      <p class="fade-in delay-1">We're a Utah-based builder specializing in custom homes...</p>
+      <div class="fade-in delay-2">
+        <a href="#contact" class="btn">Get in Touch</a>
+        <a href="#projects" class="btn">View Our Work</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- About Section -->
+  <section id="about" class="section">
+    <div class="container">
+      <h2 class="section-title">About Wilson Built</h2>
+      <div class="about-content">
+        <div class="about-image"></div>
+        <div class="about-text">
+          <h3>Building Excellence Since 2010</h3>
+          <p>At Wilson Built, we believe that your home should be a reflection of your unique style and needs.
+            We're a dedicated team of craftsmen committed to bringing your vision to life with precision and
+            care.</p>
+          <p>Whether it's a full home build or smaller work to improve your space, we focus on craftsmanship,
+            transparency, and building lasting relationships with our clients.</p>
+          <p>Our team of skilled professionals has years of experience in construction, design, and project
+            management. We work closely with you throughout the entire process to ensure that your dream
+            home becomes a reality.</p>
+          <a href="#contact" class="btn">Start Your Project</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="section services">
+    <div class="container">
+      <h2 class="section-title">Our Services</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon"><svg width="34px" height="34px" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M8 0L0 6V8H1V15H4V10H7V15H15V8H16V6L14 4.5V1H11V2.25L8 0ZM9 10H12V13H9V10Z" fill="#ffffff"></path>
+            </g>
+          </svg></div>
+          <h3 class="service-title">Custom Home Building</h3>
+          <p>We design and build custom homes tailored to your unique style and needs, focusing on quality
+            craftsmanship and attention to detail.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><svg fill="#ffffff" width="40px" height="40px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/"
+            style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+              <rect id="Icons" x="-896" y="-192" width="1280" height="800" style="fill:none;"></rect>
+              <g id="Icons1" serif:id="Icons">
+                <g id="Strike"> </g>
+                <g id="H1"> </g>
+                <g id="H2"> </g>
+                <g id="H3"> </g>
+                <g id="list-ul"> </g>
+                <g id="hamburger-1"> </g>
+                <g id="hamburger-2"> </g>
+                <g id="list-ol"> </g>
+                <g id="list-task"> </g>
+                <g id="trash"> </g>
+                <g id="vertical-menu"> </g>
+                <g id="horizontal-menu"> </g>
+                <g id="sidebar-2"> </g>
+                <g id="Pen"> </g>
+                <g id="Pen1" serif:id="Pen"> </g>
+                <g id="clock"> </g>
+                <g id="external-link"> </g>
+                <g id="hr"> </g>
+                <g id="info"> </g>
+                <g id="warning"> </g>
+                <g id="plus-circle"> </g>
+                <g id="minus-circle"> </g>
+                <g id="vue"> </g>
+                <g id="cog"> </g>
+                <g id="logo"> </g>
+                <path id="hammer"
+                  d="M55.821,44.743c-1.522,1.579 -5.373,5.562 -8.547,8.764l-13.283,-14.197l7.953,-7.953l13.877,13.386Zm-24.682,-8.284l7.953,-7.953c0,0 -4.039,-3.082 -3.667,-5.007c0.372,-1.925 1.212,-4.647 7.062,-7.062c5.849,-2.414 11.306,-2.632 11.306,-2.632l0.196,-2.637c0,0 -13.444,-2.031 -20.546,0.492c-7.102,2.523 -15.135,12.021 -15.135,12.021c0,0 1.401,4.593 -0.999,6.994c-2.401,2.401 -5.628,-0.367 -5.628,-0.367l-3.681,4.674l9.289,9.288l4.665,-3.689c0,0 -2.208,-3.307 -0.026,-5.287c4.695,-4.261 9.211,1.165 9.211,1.165Z">
+                </path>
+                <g id="radio-check"> </g>
+                <g id="eye-slash"> </g>
+                <g id="eye"> </g>
+                <g id="toggle-off"> </g>
+                <g id="shredder"> </g>
+                <g id="spinner--loading--dots-" serif:id="spinner [loading, dots]"> </g>
+                <g id="react"> </g>
+                <g id="check-selected"> </g>
+                <g id="turn-off"> </g>
+                <g id="code-block"> </g>
+                <g id="user"> </g>
+                <g id="coffee-bean"> </g>
+                <g id="coffee-beans">
+                  <g id="coffee-bean1" serif:id="coffee-bean"> </g>
+                </g>
+                <g id="coffee-bean-filled"> </g>
+                <g id="coffee-beans-filled">
+                  <g id="coffee-bean2" serif:id="coffee-bean"> </g>
+                </g>
+                <g id="clipboard"> </g>
+                <g id="clipboard-paste"> </g>
+                <g id="clipboard-copy"> </g>
+                <g id="Layer1"> </g>
+              </g>
+            </g>
+          </svg></div>
+          <h3 class="service-title">Renovations</h3>
+          <p>Transform your existing space with our comprehensive renovation services, from kitchen and
+            bathroom remodels to full-home renovations.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#"
+            xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg"
+            xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+            xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="40px" height="40px" viewBox="0 0 30 30"
+            version="1.1" id="svg822" inkscape:version="0.92.4 (f8dce91, 2019-08-02)" sodipodi:docname="design.svg"
+            fill="#000000">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+              <defs id="defs816"> <inkscape:path-effect only_selected="false" apply_with_weight="true" apply_no_weight="true"
+                  helper_size="0" steps="2" weight="33.333333" is_visible="true" id="path-effect1025"
+                  effect="bspline"></inkscape:path-effect> <inkscape:path-effect only_selected="false" apply_with_weight="true"
+                  apply_no_weight="true" helper_size="0" steps="2" weight="33.333333" is_visible="true" id="path-effect1021"
+                  effect="bspline"></inkscape:path-effect> </defs>
+              <sodipodi:namedview id="base" pagecolor="#ffffff" bordercolor="#666666" borderopacity="1.0"
+                inkscape:pageopacity="0.0" inkscape:pageshadow="2" inkscape:zoom="17.833333" inkscape:cx="19.485981"
+                inkscape:cy="13.037383" inkscape:document-units="px" inkscape:current-layer="layer1" showgrid="true" units="px"
+                inkscape:window-width="1366" inkscape:window-height="713" inkscape:window-x="0" inkscape:window-y="0"
+                inkscape:window-maximized="1" showguides="false" inkscape:guide-bbox="true">
+                <sodipodi:guide position="21.126168,22.794393" orientation="1,0" id="guide1575" inkscape:locked="false">
+                </sodipodi:guide>
+                <sodipodi:guide position="22.682243,23.285047" orientation="1,0" id="guide1635" inkscape:locked="false">
+                </sodipodi:guide>
+                <sodipodi:guide position="22.682243,7.6455921" orientation="0,1" id="guide1639" inkscape:locked="false">
+                </sodipodi:guide>
+                <sodipodi:guide position="18.859863,18.859863" orientation="1,0" id="guide1242" inkscape:locked="false">
+                </sodipodi:guide>
+                <inkscape:grid type="xygrid" id="grid1103"></inkscape:grid>
+              </sodipodi:namedview>
+              <metadata id="metadata819">
+                <rdf:rdf>
+                  <cc:work rdf:about="">
+                    <dc:format>image/svg+xml</dc:format>
+                    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"></dc:type>
+                    <dc:title></dc:title>
+                  </cc:work>
+                </rdf:rdf>
+              </metadata>
+              <g inkscape:label="Layer 1" inkscape:groupmode="layer" id="layer1" transform="translate(0,-289.0625)">
+                <path
+                  style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+                  d="M 8.2832031,5.453125 5.453125,8.2832031 6.515625,9.34375 7.9296875,7.9296875 8.6367188,8.6367188 7.2226562,10.050781 l 1.4140626,1.414063 1.4140622,-1.414063 0.707031,0.707031 -1.414062,1.414063 1.414062,1.414063 2.828126,-2.828126 z M 21.283203,5.8886719 18.617188,8.5546875 21.445312,11.382812 24.111328,8.7167969 C 23.72822,8.1781369 23.307331,7.6589012 22.824219,7.1757812 22.341109,6.6926712 21.821837,6.2718019 21.283203,5.8886719 Z M 17.203125,9.96875 6.5957031,20.576172 5.8886719,24.111328 9.4238281,23.404297 20.03125,12.796875 Z m 2.039063,6.445312 -2.828126,2.828126 1.414063,1.414062 1.414063,-1.414062 0.707031,0.707031 -1.414063,1.414062 1.414063,1.414063 1.414062,-1.414063 0.707031,0.707031 -1.414062,1.414063 1.060547,1.0625 2.830078,-2.830078 z"
+                  transform="translate(0,289.0625)" id="rect1114" inkscape:connector-curvature="0"></path>
+              </g>
+            </g>
+          </svg></div>
+          <h3 class="service-title">Design Consultation</h3>
+          <p>Our expert design team works with you to create spaces that are both beautiful and functional,
+            helping you bring your vision to life.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><svg width="40px" height="40px" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M14 0H2V16H6V12H10V16H14V0ZM5 3H7V5H5V3ZM7 7H5V9H7V7ZM9 3H11V5H9V3ZM11 7H9V9H11V7Z" fill="#ffffff"></path>
+            </g>
+          </svg></div>
+          <h3 class="service-title">Commercial Projects</h3>
+          <p>We build and renovate commercial spaces with the same attention to detail and quality that we
+            bring to our residential projects.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><svg width="40px" height="40px" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+              <path d="M10 0H6V3H10V0Z" fill="#ffffff"></path>
+              <path d="M4 2H2V16H14V2H12V5H4V2Z" fill="#ffffff"></path>
+            </g>
+          </svg></div>
+          <h3 class="service-title">Project Management</h3>
+          <p>Our experienced project managers ensure that your project stays on time, on budget, and meets our
+            high standards of quality.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><svg fill="#ffffff" width="40px" height="40px" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+              <path
+                d="M43.90625 1.96875C43.863281 1.976563 43.820313 1.988281 43.78125 2L40 2C39.730469 2 39.46875 2.121094 39.28125 2.3125L25.21875 16.59375L26.4375 18.15625L30.21875 14.34375L30.90625 20.875L29.8125 22.5L30.9375 23.96875C30.988281 24.035156 31.046875 24.089844 31.09375 24.15625L43 6.3125L43 28.28125C42.402344 28.628906 42 29.261719 42 30C42 30.738281 42.402344 31.371094 43 31.71875L43 32.96875C43 33.90625 43.609375 34.789063 44.5625 35.0625C45.503906 35.332031 46.164063 36.265625 45.96875 37.375C45.832031 38.148438 45.152344 38.832031 44.375 38.96875C43.0625 39.199219 42 38.238281 42 37C42.003906 36.640625 41.816406 36.304688 41.503906 36.121094C41.191406 35.941406 40.808594 35.941406 40.496094 36.121094C40.183594 36.304688 39.996094 36.640625 40 37C40 39.433594 42.238281 41.371094 44.71875 40.9375C46.355469 40.648438 47.652344 39.355469 47.9375 37.71875C48.304688 35.625 46.992188 33.695313 45.09375 33.15625C45.054688 33.144531 45 33.0625 45 32.96875L45 31.71875C45.597656 31.371094 46 30.738281 46 30C46 29.261719 45.597656 28.628906 45 28.28125L45 3.0625C45.003906 3.015625 45.003906 2.953125 45 2.90625C44.992188 2.863281 44.980469 2.820313 44.96875 2.78125C44.949219 2.695313 44.917969 2.609375 44.875 2.53125C44.832031 2.453125 44.78125 2.378906 44.71875 2.3125C44.691406 2.277344 44.660156 2.246094 44.625 2.21875C44.550781 2.15625 44.464844 2.101563 44.375 2.0625C44.34375 2.050781 44.316406 2.039063 44.28125 2.03125C44.160156 1.988281 44.035156 1.964844 43.90625 1.96875 Z M 40.40625 4L42.125 4L38.71875 9.125L38.4375 5.96875 Z M 36.59375 7.875L36.84375 10.9375L33.34375 11.15625 Z M 36.15625 12.96875L32.625 18.25L32.09375 13.25 Z M 8 16C6.347656 16 5 17.347656 5 19L5 31C5 32.652344 6.347656 34 8 34L11 34L11 36L8 36C4.691406 36 2 38.691406 2 42C2 45.308594 4.691406 48 8 48L30 48C33.308594 48 36 45.308594 36 42C36 38.691406 33.308594 36 30 36L27 36L27 34L28 34C29.652344 34 31 32.652344 31 31L31 27C30.992188 26.125 30.691406 25.253906 30.15625 24.5625L24.40625 17.15625C23.839844 16.433594 22.949219 16 22.03125 16 Z M 18.3125 18L22.03125 18C22.339844 18 22.625 18.132813 22.8125 18.375L28.59375 25.8125C28.859375 26.152344 28.992188 26.566406 29 27L20.75 27 Z M 13 34L25 34L25 36L13 36 Z M 8 40C9.105469 40 10 40.894531 10 42C10 43.105469 9.105469 44 8 44C6.894531 44 6 43.105469 6 42C6 40.894531 6.894531 40 8 40 Z M 14 40C15.105469 40 16 40.894531 16 42C16 43.105469 15.105469 44 14 44C12.894531 44 12 43.105469 12 42C12 40.894531 12.894531 40 14 40 Z M 24 40C25.105469 40 26 40.894531 26 42C26 43.105469 25.105469 44 24 44C22.894531 44 22 43.105469 22 42C22 40.894531 22.894531 40 24 40 Z M 30 40C31.105469 40 32 40.894531 32 42C32 43.105469 31.105469 44 30 44C28.894531 44 28 43.105469 28 42C28 40.894531 28.894531 40 30 40Z">
+              </path>
+            </g>
+          </svg></div>
+          <h3 class="service-title">Additions</h3>
+          <p>Expand your living space with a beautifully designed and expertly constructed addition that
+            seamlessly integrates with your existing home.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+<section id="projects" class="section">
+  <div class="container">
+    <h2 class="section-title">Our Projects</h2>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-image"
+          style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80')">
+        </div>
+        <div class="project-overlay">
+          <h3 class="project-title">Modern Farmhouse</h3>
+          <p class="project-category">Custom Home</p>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-image"
+          style="background-image: url('https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=800&q=80')">
+        </div>
+        <div class="project-overlay">
+          <h3 class="project-title">Highland Retreat</h3>
+          <p class="project-category">Custom Home</p>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-image"
+          style="background-image: url('https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=800&q=80')">
+        </div>
+        <div class="project-overlay">
+          <h3 class="project-title">Urban Loft Renovation</h3>
+          <p class="project-category">Renovation</p>
+        </div>
+      </div>
+
+     
+    </div>
+  </div>
+</section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="section testimonials">
+    <div class="container">
+      <h2 class="section-title">What Our Clients Say</h2>
+      <div class="testimonial-slider">
+        <div class="testimonial-slides">
+          <div class="testimonial-slide">
+            <div class="testimonial-content">
+              <p class="testimonial-text">Working with Wilson Built was an incredible experience. From the
+                initial design phase to the final walkthrough, their attention to detail and commitment
+                to quality was evident at every step. Our dream home is now a reality thanks to their
+                expertise.</p>
+              <h4 class="testimonial-author">Michael & Sarah Johnson</h4>
+              <p class="testimonial-role">Custom Home Clients</p>
+            </div>
+          </div>
+          <div class="testimonial-slide">
+            <div class="testimonial-content">
+              <p class="testimonial-text">We hired Wilson Built for our kitchen renovation and couldn't be
+                happier with the results. Their team was professional, punctual, and their craftsmanship
+                is top-notch. We'll definitely be using them for future projects.</p>
+              <h4 class="testimonial-author">Jennifer Davis</h4>
+              <p class="testimonial-role">Kitchen Renovation Client</p>
+            </div>
+          </div>
+          <div class="testimonial-slide">
+            <div class="testimonial-content">
+              <p class="testimonial-text">As a first-time home builder, I was nervous about the process.
+                The team at Wilson Built guided me through every step, making it enjoyable rather than
+                stressful. Their transparent communication and quality work exceeded my expectations.
+              </p>
+              <h4 class="testimonial-author">Robert Miller</h4>
+              <p class="testimonial-role">Custom Home Client</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-controls">
+          <button class="testimonial-btn prev">&#10094;</button>
+          <button class="testimonial-btn next">&#10095;</button>
+        </div>
+        <div class="testimonial-dots">
+          <span class="testimonial-dot active" data-slide="0"></span>
+          <span class="testimonial-dot" data-slide="1"></span>
+          <span class="testimonial-dot" data-slide="2"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section">
+    <div class="container">
+      <h2 class="section-title">Contact Us</h2>
+      <div class="contact-content">
+        <div>
+          <div class="contact-info">
+            <h3>Get in Touch</h3>
+            <p>Ready to start your project? We'd love to hear from you. Reach out to us using the contact
+              information below or fill out the form to schedule a consultation.</p>
+            <div class="contact-detail">
+              <div class="contact-icon">📍</div>
+              <div>
+                <h4>Address</h4>
+                <p>Address here</p>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <div class="contact-icon">📞</div>
+              <div>
+                <h4>Phone</h4>
+                <p>Contact here</p>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <div class="contact-icon">
+                <svg width="20px" height="20px" viewBox="0 -2.5 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000">
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <title>email [#1572]</title>
+                    <desc>Created with Sketch.</desc>
+                    <defs> </defs>
+                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                      <g id="Dribbble-Light-Preview" transform="translate(-340.000000, -922.000000)" fill="#dd0000">
+                        <g id="icons" transform="translate(56.000000, 160.000000)">
+                          <path
+                            d="M294,774.474 L284,765.649 L284,777 L304,777 L304,765.649 L294,774.474 Z M294.001,771.812 L284,762.981 L284,762 L304,762 L304,762.981 L294.001,771.812 Z"
+                            id="email-[#1572]"> </path>
+                        </g>
+                      </g>
+                    </g>
+                  </g>
+                </svg>
+              </div>
+              <div>
+                <h4>Email</h4>
+                <p>Email here</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <form class="contact-form">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <input type="tel" placeholder="Your Phone">
+            <textarea placeholder="Tell us about your project"></textarea>
+            <button type="submit" class="btn">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer class="footer">
+    <div class="container footer-content">
+      <!-- Logo and About -->
+      <div>
+      <div style="display: flex; align-items: center;gap:9px">
+        <span><img src="logo.png" alt="" style="height: 40px;"></span>
+        <a href="#" class="logo">WILSON<span>BUILT</span></a>
+      </div>
+        <p class="footer-description">We build custom homes with precision and passion. Excellence in craftsmanship since
+          2010.</p>
+        <div class="footer-social">
+          <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+  
+      <!-- Useful Links -->
+      <div>
+        <h4 class="footer-heading">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+  
+      <!-- Contact Info -->
+      <div>
+        <h4 class="footer-heading">Contact</h4>
+        <ul class="footer-links">
+          <li>📍 Address here</li>
+          <li>📞 Contact here</li>
+          <li style="display: flex; align-items: center; gap: 5px;"><svg width="20px" height="20px" viewBox="0 -2.5 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+              <title>email [#1572]</title>
+              <desc>Created with Sketch.</desc>
+              <defs> </defs>
+              <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g id="Dribbble-Light-Preview" transform="translate(-340.000000, -922.000000)" fill="#dd0000">
+                  <g id="icons" transform="translate(56.000000, 160.000000)">
+                    <path
+                      d="M294,774.474 L284,765.649 L284,777 L304,777 L304,765.649 L294,774.474 Z M294.001,771.812 L284,762.981 L284,762 L304,762 L304,762.981 L294.001,771.812 Z"
+                      id="email-[#1572]"> </path>
+                  </g>
+                </g>
+              </g>
+            </g>
+          </svg> Email here</li>
+        </ul>
+      </div>
+    </div>
+  
+    <div class="copyright">
+      &copy; 2025 Wilson Built. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const navToggle = document.querySelector(".nav-toggle");
+      const nav = document.querySelector("nav");
+      const closeNav = document.querySelector(".close-nav");
+      const overlay = document.querySelector(".overlay");
+      const navLinks = document.querySelectorAll("nav ul li a");
+
+      // Show nav
+      navToggle.addEventListener("click", () => {
+        nav.classList.add("active");
+        overlay.classList.add("active");
+      });
+
+      // Hide nav
+      closeNav.addEventListener("click", () => {
+        nav.classList.remove("active");
+        overlay.classList.remove("active");
+      });
+
+      // Hide nav when clicking the overlay
+      overlay.addEventListener("click", () => {
+        nav.classList.remove("active");
+        overlay.classList.remove("active");
+      });
+
+      // Optional: Hide nav on link click (useful for one-page navigation)
+      navLinks.forEach(link => {
+        link.addEventListener("click", () => {
+          nav.classList.remove("active");
+          overlay.classList.remove("active");
+        });
+      });
+    });
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const navToggle = document.querySelector(".nav-toggle");
+      const nav = document.querySelector("nav");
+      const closeNav = document.querySelector(".close-nav");
+      const overlay = document.querySelector(".overlay");
+      const navLinks = document.querySelectorAll("nav ul li a");
+
+      // Navigation toggle
+      navToggle.addEventListener("click", () => {
+        nav.classList.add("active");
+        overlay.classList.add("active");
+      });
+
+      closeNav.addEventListener("click", () => {
+        nav.classList.remove("active");
+        overlay.classList.remove("active");
+      });
+
+      overlay.addEventListener("click", () => {
+        nav.classList.remove("active");
+        overlay.classList.remove("active");
+      });
+
+      navLinks.forEach(link => {
+        link.addEventListener("click", () => {
+          nav.classList.remove("active");
+          overlay.classList.remove("active");
+        });
+      });
+
+      // Testimonial Slider Logic
+      const slidesContainer = document.querySelector(".testimonial-slides");
+      const slides = document.querySelectorAll(".testimonial-slide");
+      const prevBtn = document.querySelector(".testimonial-btn.prev");
+      const nextBtn = document.querySelector(".testimonial-btn.next");
+      const dots = document.querySelectorAll(".testimonial-dot");
+      let currentIndex = 0;
+
+      function updateSlider(index) {
+        const slideWidth = slides[0].offsetWidth;
+        slidesContainer.style.transform = `translateX(-${index * slideWidth}px)`;
+
+        dots.forEach(dot => dot.classList.remove("active"));
+        dots[index].classList.add("active");
+      }
+
+      prevBtn.addEventListener("click", () => {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        updateSlider(currentIndex);
+      });
+
+      nextBtn.addEventListener("click", () => {
+        currentIndex = (currentIndex + 1) % slides.length;
+        updateSlider(currentIndex);
+      });
+
+      dots.forEach(dot => {
+        dot.addEventListener("click", () => {
+          const index = parseInt(dot.getAttribute("data-slide"));
+          currentIndex = index;
+          updateSlider(currentIndex);
+        });
+      });
+
+      // Initialize slider position
+      window.addEventListener("resize", () => updateSlider(currentIndex));
+      updateSlider(currentIndex);
+    });
+  </script>
+
+
+</body>
+
+</html>
